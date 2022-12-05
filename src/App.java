@@ -8,6 +8,7 @@ public class App {
     public int index = 0;
     public ArrayList<String[]> books = new ArrayList<String[]>();
     public String[] bookInformation = new String[5];
+    public Book book = new Book("Dictionary for Library and Information Science", 9781591, "Joan M. Reitz", "Libraries Unlimited", "March 27, 2004");
 
     public static void main(String[] args) throws Exception {
         App app = new App();
@@ -142,10 +143,10 @@ public class App {
         } else System.out.println("\n========================================================================\n");
     }
 
-    public void addNewBook(String title, String isbn, String author, String publisher, String date) {
+    public void addNewBook(String title, int isbn, String author, String publisher, String date) {
         bookInformation = new String[5];
         bookInformation[0] = title;
-        bookInformation[1] = isbn;
+        bookInformation[1] = String.valueOf(isbn);
         bookInformation[2] = author;
         bookInformation[3] = publisher;
         bookInformation[4] = date;
@@ -186,26 +187,9 @@ public class App {
     }
 
     public void queryNewBook() {
-        Scanner sc = new Scanner(System.in);
-
         System.out.println("\n========================================================================\n");
 
-        System.out.print("Title: ");
-        String title = sc.nextLine();
-
-        System.out.print("ISBN: ");
-        String isbn = sc.nextLine();
-
-        System.out.print("Author: ");
-        String author = sc.nextLine();
-
-        System.out.print("Publisher: ");
-        String publisher = sc.nextLine();
-
-        System.out.print("Date: ");
-        String date = sc.nextLine();
-
-        addNewBook(title, isbn, author, publisher, date);
+        addNewBook(book.getBook_Name(), book.getISBN(), book.getAuthor(), book.getPublisher(), book.getDate());
         System.out.println("\n========================================================================\n");
         System.out.println("New book successfully added!");
         System.out.println("\n========================================================================\n");
